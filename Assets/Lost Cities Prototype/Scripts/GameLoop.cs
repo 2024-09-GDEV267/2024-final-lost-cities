@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Card;
+
+public class Player: MonoBehaviour
+    {
+        public string player_name = "";
+        public Card[] hand = new Card[8];
+    }
 
 public class GameLoop : MonoBehaviour
 {
@@ -11,10 +16,6 @@ public class GameLoop : MonoBehaviour
     public GameObject endTurnButton;
 
     private string player_name = "Player 1";
-    private Card[] hand_1 = new Card[8];
-    private Card[] hand_1 = new Card[8];
-
-    
 
     public void play_card()
     {
@@ -30,7 +31,8 @@ public class GameLoop : MonoBehaviour
     }
     public void draw()
     {
-        Debug.Log(player_name + " drew a card");
+        Card drawn_card = deck.Draw_from_deck();
+        Debug.Log(player_name + " drew " + drawn_card.ToString());
         drawButton.SetActive(false);
         endTurnButton.SetActive(true);
     }

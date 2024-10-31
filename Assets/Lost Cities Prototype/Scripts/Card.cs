@@ -109,4 +109,9 @@ public class Card : MonoBehaviour
         }
     }
 
+    public string ToString()
+    {
+        return value + " of " + colour;
+    }
+
 }
