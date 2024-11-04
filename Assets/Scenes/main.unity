@@ -1312,6 +1312,10 @@ MonoBehaviour:
   actionButtons: {fileID: 1088296853}
   drawButton: {fileID: 132853028}
   endTurnButton: {fileID: 684867783}
+  card_prefab: {fileID: 1242099688780929454, guid: dd443d020bf066640bf98c88a2dc9eb7,
+    type: 3}
+  deck_prefab: {fileID: 2485093554116377455, guid: 1464f6a231a87f44ea3479307d09865a,
+    type: 3}
 --- !u!114 &1440731036
 MonoBehaviour:
   m_ObjectHideFlags: 0

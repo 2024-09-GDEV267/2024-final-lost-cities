@@ -89,9 +89,9 @@ public class Deck : MonoBehaviour
         deck = cards;
 
     }
-    public Card Draw_from_deck()
+    public GameObject Draw_From_Deck()
     {
-        Card card_to_draw = deck[0];
+        GameObject card_to_draw = deck[0];
         deck.RemoveAt(0);
         return card_to_draw;
     }

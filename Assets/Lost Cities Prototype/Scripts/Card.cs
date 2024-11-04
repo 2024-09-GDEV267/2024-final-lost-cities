@@ -109,7 +109,7 @@ public class Card : MonoBehaviour
         }
     }
 
-    public string ToString()
+    public override string ToString()
     {
         return value + " of " + colour;
     }
