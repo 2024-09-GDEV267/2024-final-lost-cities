@@ -19,6 +19,13 @@ public class UIMasterRD : MonoBehaviour
     public GameObject red_draw;
     public GameObject deck_draw;
 
+    [Header("Score Texts")]
+    public GameObject blue_score;
+    public GameObject green_score;
+    public GameObject white_score;
+    public GameObject yellow_score;
+    public GameObject red_score;
+
     [Header("Debug")]
     public GameObject robot_skip;
 
