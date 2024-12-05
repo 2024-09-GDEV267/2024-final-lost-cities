@@ -54,6 +54,7 @@ public class GameMaster : MonoBehaviour
     public bool last_card_drawn = false;
     public GameObject[] card_slot;
     public GameObject card_selected = null;
+    public GameObject robot_card_selected = null;
     public GameObject robot_slected;
     public Colour discarded_color = Colour.Null;
 
@@ -78,8 +79,7 @@ public class GameMaster : MonoBehaviour
      // Coin Flip Scene
         int coin_flip = UnityEngine.Random.Range(0, 2);
 
-        //current_turn = turn_order[coin_flip];
-        current_turn = Order.Human;
+        current_turn = turn_order[coin_flip];
 
 
      // Deck
@@ -184,7 +184,7 @@ public class GameMaster : MonoBehaviour
                         Debug.Log("Robot Turn");
                     }
 
-                    //robot_script.Take_Turn();
+                    robot_script.Take_Turn();
 
                     break;
             }
@@ -650,6 +650,95 @@ public class GameMaster : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void Robot_Discard_Action()
+    {
+
+        CardRD card = robot_card_selected.GetComponent<CardRD>();
+
+        string value = "";
+
+        if (card.value == 1)
+        {
+            value = "Agreement";
+        }
+        else value = Convert.ToString(card.value);
+
+        UIMasterRD.S.Update_Robot_Text("Robot Discarded " + card.colour + " " + value);
+
+        switch (card.colour)
+        {
+            case Colour.Blue:
+                Debug.Log("Discarding a Blue Card");
+                blue_script.Discard_Card(robot_card_selected);
+
+                card.current_pile = Pile.Expedition_Discard;
+
+                robot_card_selected = null;
+
+                card.Show_Visibility();
+
+                break;
+
+            case Colour.Green:
+                Debug.Log("Discarding a Green Card");
+                green_script.Discard_Card(robot_card_selected);
+
+                card.current_pile = Pile.Expedition_Discard;
+
+                robot_card_selected = null;
+
+                card.Show_Visibility();
+
+                break;
+
+            case Colour.White:
+                Debug.Log("Discarding a White Card");
+                white_script.Discard_Card(robot_card_selected);
+
+                card.current_pile = Pile.Expedition_Discard;
+
+                robot_card_selected = null;
+
+                card.Show_Visibility();
+
+                break;
+
+            case Colour.Yellow:
+                Debug.Log("Discarding a Yellow Card");
+                yellow_script.Discard_Card(robot_card_selected);
+
+                card.current_pile = Pile.Expedition_Discard;
+
+                robot_card_selected = null;
+
+                card.Show_Visibility();
+
+                break;
+
+            case Colour.Red:
+                Debug.Log("Discarding a Red Card");
+                red_script.Discard_Card(robot_card_selected);
+
+                card.current_pile = Pile.Expedition_Discard;
+
+                robot_card_selected = null;
+
+                card.Show_Visibility();
+
+                break;
+        }
+
+    }
+
+    public void Robot_Draw_Action()
+    {
+        robot_script.Add_Draw_to_Hand(deck_script.Draw_Card());
+
+        robot_script.has_drawed = true;
+
+        Robot_End_Turn();
     }
 
 }

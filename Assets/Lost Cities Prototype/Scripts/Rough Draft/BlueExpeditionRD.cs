@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -63,6 +64,7 @@ public class BlueExpeditionRD : MonoBehaviour
     public void Human_Add_Card_To_Plot(GameObject card)
     {
         human_plot.Add(card);
+        Human_Update_Score();
     }
 
     public bool Discard_Check()
@@ -86,6 +88,38 @@ public class BlueExpeditionRD : MonoBehaviour
 
         return card;
 
+    }
+
+    public void Human_Update_Score()
+    {
+
+        UIMasterRD.S.Update_Blue(Calculate_Score());
+    }
+
+    string Calculate_Score()
+    {
+        string message = "";
+        int score = -20;
+        int multiplier = 1;
+        int total_score = 0;
+
+        foreach (GameObject card in human_plot)
+        {
+            CardRD card_data = card.GetComponent<CardRD>();
+            if (card_data.value == 1)
+            {
+                multiplier++;
+                message += "A, ";
+            }
+            else
+            {
+                score += card_data.value;
+                message += Convert.ToString(card_data.value) + ", ";
+            }
+        }
+        total_score = score * multiplier;
+        message += "\nMultiplier: " + multiplier + "\nScore: " + score + "\nTotal Score: " + total_score;
+        return message;
     }
 
 }

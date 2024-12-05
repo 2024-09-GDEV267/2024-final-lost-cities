@@ -34,6 +34,7 @@ public class UIMasterRD : MonoBehaviour
 
     [Header("Debug")]
     public GameObject robot_skip;
+    public GameObject robot_action;
 
 
 
@@ -152,5 +153,47 @@ public class UIMasterRD : MonoBehaviour
     public void Skip_Robot()
     {
         GameMaster.S.Robot_End_Turn();
+    }
+
+    public void Update_Blue(string message)
+    {
+        blue_score_text = message;
+
+        blue_score.GetComponent<Text>().text = blue_score_text;
+    }
+
+    public void Update_Green(string message)
+    {
+        green_score_text = message;
+
+        green_score.GetComponent<Text>().text = green_score_text;
+    }
+
+    public void Update_White(string message)
+    {
+        white_score_text = message;
+
+        white_score.GetComponent<Text>().text = white_score_text;
+    }
+
+    public void Update_Yellow(string message)
+    {
+        yellow_score_text = message;
+
+        yellow_score.GetComponent<Text>().text = yellow_score_text;
+    }
+
+    public void Update_Red(string message)
+    {
+        red_score_text = message;
+
+        red_score.GetComponent<Text>().text = red_score_text;
+    }
+
+    public void Update_Robot_Text(string message)
+    {
+        robot_action.SetActive(true);
+
+        robot_action.GetComponent<Text>().text = message;
     }
 }

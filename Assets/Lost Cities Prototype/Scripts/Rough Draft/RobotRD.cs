@@ -57,7 +57,30 @@ public class RobotRD : MonoBehaviour
 
     public void Take_Turn()
     {
-        Debug.Log("Robot Taking Turn ...");
+
+        Action_Turn();
+    }
+
+    public void Action_Turn()
+    {
+
+        GameObject card_object = cards[0];
+
+        GameMaster.S.robot_card_selected = card_object;
+
+        GameMaster.S.Robot_Discard_Action();
+
+        cards.RemoveAt(0);
+
+        has_played = true;
+
+        Draw_Turn();
+    }
+
+    public void Draw_Turn()
+    {
+
+        GameMaster.S.Robot_Draw_Action();
     }
 
     public void Sort_Hand()
@@ -66,11 +89,13 @@ public class RobotRD : MonoBehaviour
 
         foreach (GameObject card in cards)
         {
-            Card script = card.GetComponent<Card>();
+            CardRD script = card.GetComponent<CardRD>();
 
             card.transform.SetParent(slots[count].transform);
 
             card.transform.position = slots[count].transform.position;
+
+            script.current_pile = Pile.Robot_Hand;
 
             card.SetActive(true);
 

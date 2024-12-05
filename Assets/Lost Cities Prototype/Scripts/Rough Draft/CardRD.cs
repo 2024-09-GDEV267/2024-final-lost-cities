@@ -103,7 +103,7 @@ public class CardRD : MonoBehaviour
                 break;
 
             case Colour.Green:
-                sprite_render.sprite = images[3];
+                sprite_render.sprite = images[2];
                 break;
 
             case Colour.White:
