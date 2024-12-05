@@ -34,6 +34,7 @@ public class UIMasterRD : MonoBehaviour
 
     [Header("Debug")]
     public GameObject robot_skip;
+    public GameObject win_message;
     public GameObject robot_action;
 
 
@@ -195,5 +196,17 @@ public class UIMasterRD : MonoBehaviour
         robot_action.SetActive(true);
 
         robot_action.GetComponent<Text>().text = message;
+    }
+
+    public void End_Scene(string winner)
+    {
+        robot_action.SetActive(false);
+
+        win_message.SetActive(true);
+
+        play_object.SetActive(false);
+        discard_object.SetActive(false);
+
+        win_message.GetComponent<Text>().text = winner + " Won!";
     }
 }

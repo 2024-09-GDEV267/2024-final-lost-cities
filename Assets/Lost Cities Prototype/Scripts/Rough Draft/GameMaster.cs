@@ -58,6 +58,10 @@ public class GameMaster : MonoBehaviour
     public GameObject robot_slected;
     public Colour discarded_color = Colour.Null;
 
+    [Header("Scores")]
+    public int human_final_score = 0;
+    public int robot_final_score = 0;
+
 
     private void Awake()
     {
@@ -229,6 +233,29 @@ public class GameMaster : MonoBehaviour
     public void Score_Scene()
     {
         Debug.LogWarning("End Game Scene");
+
+        string winner = "";
+
+        human_final_score = blue_script.human_total_score + green_script.human_total_score + white_script.human_total_score + yellow_script.human_total_score + red_script.human_total_score;
+        robot_final_score = blue_script.robot_total_score + green_script.robot_total_score + white_script.robot_total_score + yellow_script.robot_total_score + red_script.robot_total_score;
+
+        if (human_final_score > robot_final_score)
+        {
+            Best_of_Three.Add(Round.First, Order.Human);
+
+            winner = "Human";
+        }
+        else
+        {
+            Best_of_Three.Add(Round.First, Order.Robot);
+
+            winner = "Robot";
+        }
+
+        Debug.Log(Best_of_Three);
+
+        UIMasterRD.S.End_Scene(winner);
+
     }
 
     public void Select(GameObject card)
@@ -586,7 +613,7 @@ public class GameMaster : MonoBehaviour
             case Colour.Blue:
                 if (human_script.Open_Spot_Check())
                 {
-                    human_script.Add_Draw_to_Hand(deck_script.Draw_Card());
+                    human_script.Add_Draw_to_Hand(blue_script.Draw_Card());
 
                     human_script.has_drawed = true;
                 }
@@ -597,7 +624,7 @@ public class GameMaster : MonoBehaviour
             case Colour.Green:
                 if (human_script.Open_Spot_Check())
                 {
-                    human_script.Add_Draw_to_Hand(white_script.Draw_Card());
+                    human_script.Add_Draw_to_Hand(green_script.Draw_Card());
 
                     human_script.has_drawed = true;
                 }

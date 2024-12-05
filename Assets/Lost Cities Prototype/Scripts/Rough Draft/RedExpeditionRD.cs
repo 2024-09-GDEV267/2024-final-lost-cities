@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class RedExpeditionRD : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class RedExpeditionRD : MonoBehaviour
     public List<GameObject> human_plot;
     public List<GameObject> robot_plot;
     public List<GameObject> expedition_discard;
+
+    [Header("Score")]
+    public int human_total_score = 0;
+    public int robot_total_score = 0;
 
     public void Set_Top_Deck()
     {
@@ -86,6 +91,8 @@ public class RedExpeditionRD : MonoBehaviour
 
         expedition_discard.RemoveAt((expedition_discard.Count) - 1);
 
+        Set_Top_Deck();
+
         return card;
 
     }
@@ -100,7 +107,8 @@ public class RedExpeditionRD : MonoBehaviour
         string message = "";
         int score = -20;
         int multiplier = 1;
-        int total_score = 0;
+
+        int extra = 0;
 
         foreach (GameObject card in human_plot)
         {
@@ -116,8 +124,23 @@ public class RedExpeditionRD : MonoBehaviour
                 message += Convert.ToString(card_data.value) + ", ";
             }
         }
-        total_score = score * multiplier;
-        message += "\nMultiplier: " + multiplier + "\nScore: " + score + "\nTotal Score: " + total_score;
+
+        if (human_plot.Count >= 8)
+        {
+            extra = 20;
+        }
+
+        human_total_score = (score * multiplier) + extra;
+
+        if (extra == 20)
+        {
+            message += "\nMultiplier: " + multiplier + "\nScore: " + score + "\nExtra Achieved: +20" + "\nTotal Score: " + human_total_score;
+        }
+        else
+        {
+            message += "\nMultiplier: " + multiplier + "\nScore: " + score + "\nTotal Score: " + human_total_score;
+        }
+
         return message;
     }
 }
