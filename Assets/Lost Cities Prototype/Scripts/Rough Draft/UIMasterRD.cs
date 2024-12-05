@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class UIMasterRD : MonoBehaviour
 {
@@ -26,6 +26,12 @@ public class UIMasterRD : MonoBehaviour
     public GameObject yellow_score;
     public GameObject red_score;
 
+    private string blue_score_text;
+    private string green_score_text;
+    private string white_score_text;
+    private string yellow_score_text;
+    private string red_score_text;
+
     [Header("Debug")]
     public GameObject robot_skip;
 
@@ -34,11 +40,36 @@ public class UIMasterRD : MonoBehaviour
     private void Awake()
     {
         S = this;
-    }
 
-    public void Set_Human_Active()
-    {
-        
+        blue_score_text = blue_score.GetComponent<Text>().text;
+
+        blue_score_text = "";
+
+        blue_score.GetComponent<Text>().text = blue_score_text;
+
+        green_score_text = green_score.GetComponent<Text>().text;
+
+        green_score_text = "";
+
+        green_score.GetComponent<Text>().text = green_score_text;
+
+        white_score_text = white_score.GetComponent<Text>().text;
+
+        white_score_text = "";
+
+        white_score.GetComponent<Text>().text = white_score_text;
+
+        yellow_score_text = yellow_score.GetComponent<Text>().text;
+
+        yellow_score_text = "";
+
+        yellow_score.GetComponent<Text>().text = yellow_score_text;
+
+        red_score_text = red_score.GetComponent<Text>().text;
+
+        red_score_text = "";
+
+        red_score.GetComponent<Text>().text = red_score_text;
     }
 
     public void On_Play_Pressed()
