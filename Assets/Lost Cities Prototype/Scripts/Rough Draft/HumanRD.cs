@@ -68,6 +68,8 @@ public class HumanRD : MonoBehaviour
 
             card.SetActive(true);
 
+            script.Show_Visibility();
+
             count++;
         }
 

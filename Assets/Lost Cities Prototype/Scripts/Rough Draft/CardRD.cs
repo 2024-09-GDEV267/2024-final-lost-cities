@@ -34,6 +34,7 @@ public class CardRD : MonoBehaviour
     public Sprite       value_sprite;
     public GameObject   image_object;
     public Sprite       card_art;
+    public GameObject   back_card;
 
     [Header("Card Properties")]
     public Colour       colour;
@@ -68,6 +69,8 @@ public class CardRD : MonoBehaviour
 
         card = this.transform.gameObject;
 
+        Show_Visibility();
+
     }
 
 
@@ -96,23 +99,23 @@ public class CardRD : MonoBehaviour
                 break;
 
             case Colour.Blue:
-                sprite_render.color = Color.blue;
+                sprite_render.sprite = images[1];
                 break;
 
             case Colour.Green:
-                sprite_render.color = Color.green;
+                sprite_render.sprite = images[3];
                 break;
 
             case Colour.White:
-                sprite_render.color = Color.white;
+                sprite_render.sprite = images[0];
                 break;
 
             case Colour.Yellow:
-                sprite_render.color = Color.yellow;
+                sprite_render.sprite = images[3];
                 break;
 
             case Colour.Red:
-                sprite_render.color = Color.red;
+                sprite_render.sprite = images[4];
                 break;
 
         }
@@ -121,6 +124,21 @@ public class CardRD : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         GameMaster.S.Select(card);
+    }
+
+    public void Show_Visibility()
+    {
+        if (current_pile == Pile.Human_Hand || current_pile == Pile.Expedition_Discard)
+        {
+            back_card.SetActive(false);
+            value_object.SetActive(true);
+            value_UD_object.SetActive(true);
+        } else
+        {
+            back_card.SetActive(true);
+            value_object.SetActive(false);
+            value_UD_object.SetActive(false);
+        }
     }
 
 }

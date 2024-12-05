@@ -98,6 +98,8 @@ public class GameMaster : MonoBehaviour
             cardRD.current_pile = Pile.Human_Hand;
 
             human_script.Add_Card_to_Hand(card);
+
+            cardRD.Show_Visibility();
         }
 
 
@@ -111,6 +113,8 @@ public class GameMaster : MonoBehaviour
             cardRD.current_pile = Pile.Robot_Hand;
 
             robot_script.Add_Card_to_Hand(card);
+
+            cardRD.Show_Visibility();
         }
 
         deck_script.Set_Top_Deck();
@@ -135,6 +139,7 @@ public class GameMaster : MonoBehaviour
         {
             human_script.Readd_Card(card_slot[0]);
 
+            card_slot[0] = null;
             card_selected = null;
         }
 
@@ -287,6 +292,8 @@ public class GameMaster : MonoBehaviour
                     card_slot[0] = null;
 
                     human_script.has_played = true;
+
+                    card.Show_Visibility();
                 }
                 
                 break;
@@ -313,6 +320,8 @@ public class GameMaster : MonoBehaviour
                     card_slot[0] = null;
 
                     human_script.has_played = true;
+
+                    card.Show_Visibility();
                 }
                 break;
 
@@ -338,6 +347,8 @@ public class GameMaster : MonoBehaviour
                     card_slot[0] = null;
 
                     human_script.has_played = true;
+
+                    card.Show_Visibility();
                 }
                 break;
 
@@ -363,6 +374,8 @@ public class GameMaster : MonoBehaviour
                     card_slot[0] = null;
 
                     human_script.has_played = true;
+
+                    card.Show_Visibility();
                 }
                 break;
 
@@ -388,6 +401,8 @@ public class GameMaster : MonoBehaviour
                     card_slot[0] = null;
 
                     human_script.has_played = true;
+
+                    card.Show_Visibility();
                 }
                 break;
 
@@ -423,6 +438,8 @@ public class GameMaster : MonoBehaviour
 
                 discarded_color = Colour.Blue;
 
+                card.Show_Visibility();
+
                 break;
 
             case Colour.Green:
@@ -439,6 +456,9 @@ public class GameMaster : MonoBehaviour
                 human_script.has_played = true;
 
                 discarded_color = Colour.Green;
+
+                card.Show_Visibility();
+
                 break;
 
             case Colour.White:
@@ -455,6 +475,9 @@ public class GameMaster : MonoBehaviour
                 human_script.has_played = true;
 
                 discarded_color = Colour.White;
+
+                card.Show_Visibility();
+
                 break;
 
             case Colour.Yellow:
@@ -471,6 +494,9 @@ public class GameMaster : MonoBehaviour
                 human_script.has_played = true;
 
                 discarded_color = Colour.Yellow;
+
+                card.Show_Visibility();
+
                 break;
 
             case Colour.Red:
@@ -487,6 +513,9 @@ public class GameMaster : MonoBehaviour
                 human_script.has_played = true;
 
                 discarded_color = Colour.Red;
+
+                card.Show_Visibility();
+
                 break;
 
         }
