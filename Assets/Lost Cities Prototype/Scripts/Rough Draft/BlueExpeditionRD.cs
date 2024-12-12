@@ -50,7 +50,7 @@ public class BlueExpeditionRD : MonoBehaviour
         {
             CardRD compare = game.GetComponent<CardRD>();
 
-            if (card.value == compare.value) return true;
+            //if (card.value == compare.value) return true;
 
             if (card.value < compare.value) return false;
         }
